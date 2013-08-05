@@ -15,7 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="XLib.h">
+    <ClInclude Include="xString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xLib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xTime.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xDefine.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -23,8 +32,17 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="XLib.cpp">
+    <ClCompile Include="xLib.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="xString.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xTime.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

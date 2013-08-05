@@ -74,11 +74,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="XLib.h" />
+    <ClInclude Include="xDefine.h" />
+    <ClInclude Include="xLib.h" />
+    <ClInclude Include="xString.h" />
+    <ClInclude Include="xTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="XLib.cpp" />
+    <ClCompile Include="xLib.cpp" />
+    <ClCompile Include="xString.cpp" />
+    <ClCompile Include="xTime.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
