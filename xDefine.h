@@ -7,4 +7,7 @@
 #define XSPACE_BEGIN namespace XLib{
 #define XSPACE_END }
 
+typedef std::string		DString;
+typedef bool			DBool;
+
 #endif

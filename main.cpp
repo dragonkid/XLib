@@ -3,22 +3,14 @@
 
 int main()
 {
-	std::string tmp_str = ";aaa;;;;";
-	std::string tmp_strFlag = ";";
+	std::string tmp_str = "a;;;b;;;;c;";
+	std::string tmp_strA = ";;;";
+	std::string tmp_strB = ";;";
 	
 	std::vector<std::string> tmp_vec;
 	
 	// test start
-	if ( false == XLib::XString::splitStr2Vec(tmp_str, tmp_strFlag, tmp_vec) )
-	{
-		std::cout << "split failed." << std::endl;
-	}
-	for (std::vector<std::string>::size_type i = 0; i < tmp_vec.size(); ++i)
-	{
-		std::cout << "#" << i + 1 << "\t" << tmp_vec.at(i) << std::endl;	
-	}
-	tmp_strFlag = ";:";
-	XLib::XString::mergeVec2Str(tmp_vec, tmp_strFlag, tmp_str);
+	XLib::XString::replaceAWithB(tmp_str, tmp_strA, tmp_strB);
 	std::cout << tmp_str << std::endl;
 	// test end
 
