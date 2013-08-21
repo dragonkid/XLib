@@ -74,4 +74,72 @@ void XString::replaceAWithB(DString & inout_str, const DString in_strA, const DS
 	}
 }
 
+DBool XString::subStrS2E(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
+{
+	out_str.clear();
+
+	DString::size_type tmp_uiStartPos = 0;
+	DString::size_type tmp_uiEndPos = 0;
+	if ( DString::npos == (tmp_uiStartPos = in_str.find(in_strStartFlag)) )
+	{
+		return false;
+	}
+	else
+	{
+		tmp_uiStartPos += in_strStartFlag.length();
+	}
+	if ( DString::npos == (tmp_uiEndPos = in_str.find(in_strEndFlag, tmp_uiStartPos)) )
+	{
+		return false;
+	}
+
+	out_str = in_str.substr(tmp_uiStartPos, tmp_uiEndPos - tmp_uiStartPos);
+	return true;
+}
+
+DBool XString::subStrE2S(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
+{
+	out_str.clear();
+
+	DString::size_type tmp_uiStartPos = 0;
+	DString::size_type tmp_uiEndPos = 0;
+	if ( (DString::npos == (tmp_uiEndPos = in_str.rfind(in_strEndFlag)))
+		|| (0 == tmp_uiEndPos))
+	{
+		return false;
+	}
+	if ( DString::npos == (tmp_uiStartPos = in_str.rfind(in_strStartFlag, tmp_uiEndPos - 1)) )
+	{
+		return false;
+	}
+	else
+	{	
+		tmp_uiStartPos += in_strStartFlag.length();
+	}
+
+	out_str = in_str.substr(tmp_uiStartPos, tmp_uiEndPos - tmp_uiStartPos);
+	return true;
+}
+
+DBool XString::subStrWide(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
+{
+	out_str.clear();
+
+	DString::size_type tmp_uiStartPos = 0;
+	DString::size_type tmp_uiEndPos = 0;
+	if ( DString::npos == (tmp_uiStartPos = in_str.find(in_strStartFlag)) )
+	{
+		return false;
+	}
+	if ( DString::npos == (tmp_uiEndPos = in_str.rfind(in_strEndFlag))
+		|| (tmp_uiEndPos <= tmp_uiStartPos))
+	{
+		return false;
+	}
+
+	tmp_uiStartPos += in_strStartFlag.length();
+	out_str = in_str.substr(tmp_uiStartPos, tmp_uiEndPos - tmp_uiStartPos);
+	return true;
+}
+
 XSPACE_END
