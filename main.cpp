@@ -17,6 +17,11 @@ int main()
 //	std::string tmp_strB = ";";
 
 	// test start
+	double tmp_dOffset = 0;
+	if ( XLib::XTime::getLocalTZOffset(tmp_dOffset) )
+	{
+		std::cout << tmp_dOffset << std::endl;
+	}
 
 	// test end
 
