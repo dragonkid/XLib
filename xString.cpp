@@ -2,7 +2,7 @@
 
 XSPACE_BEGIN
 
-DBool XString::startWith(const DString in_str, const DString in_strFlag)
+bool XString::startWith(const DString in_str, const DString in_strFlag)
 {
 	if ( in_strFlag.empty() || (in_str.length() < in_strFlag.length()) )
 	{
@@ -12,7 +12,7 @@ DBool XString::startWith(const DString in_str, const DString in_strFlag)
 	return (0 == in_str.find(in_strFlag))? true: false;
 }
 
-DBool XString::endWith(const DString in_str, const DString in_strFlag)
+bool XString::endWith(const DString in_str, const DString in_strFlag)
 {
 	if ( in_strFlag.empty() || (in_str.length() < in_strFlag.length()) )
 	{
@@ -24,7 +24,7 @@ DBool XString::endWith(const DString in_str, const DString in_strFlag)
 	return (tmp_uiPos == in_str.find(in_strFlag, tmp_uiPos));
 }
 
-DBool XString::splitStr2Vec(const DString in_str, const DString in_strFlag,	std::vector<DString>& out_vec)
+bool XString::splitStr2Vec(const DString in_str, const DString in_strFlag,	std::vector<DString>& out_vec)
 {
 	out_vec.clear();
 
@@ -47,7 +47,7 @@ DBool XString::splitStr2Vec(const DString in_str, const DString in_strFlag,	std:
 	{
 		out_vec.push_back(tmp_strTmp.substr(tmp_uiPosStart, tmp_uiPosEnd - tmp_uiPosStart));
 		tmp_uiPosStart = tmp_uiPosEnd + 1;
-	} 
+	}
 
 	return true;
 }
@@ -74,7 +74,7 @@ void XString::replaceAWithB(DString & inout_str, const DString in_strA, const DS
 	}
 }
 
-DBool XString::subStrS2E(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
+bool XString::subStrS2E(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
 {
 	out_str.clear();
 
@@ -97,7 +97,7 @@ DBool XString::subStrS2E(const DString & in_str, const DString & in_strStartFlag
 	return true;
 }
 
-DBool XString::subStrE2S(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
+bool XString::subStrE2S(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
 {
 	out_str.clear();
 
@@ -113,7 +113,7 @@ DBool XString::subStrE2S(const DString & in_str, const DString & in_strStartFlag
 		return false;
 	}
 	else
-	{	
+	{
 		tmp_uiStartPos += in_strStartFlag.length();
 	}
 
@@ -121,7 +121,7 @@ DBool XString::subStrE2S(const DString & in_str, const DString & in_strStartFlag
 	return true;
 }
 
-DBool XString::subStrWide(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
+bool XString::subStrWide(const DString & in_str, const DString & in_strStartFlag, const DString & in_strEndFlag, DString & out_str )
 {
 	out_str.clear();
 

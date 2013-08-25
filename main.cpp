@@ -17,11 +17,6 @@ int main()
 //	std::string tmp_strB = ";";
 
 	// test start
-	DFloat8 tmp_fResult;
-	if ( XLib::XTime::getLocalTZOffset(tmp_fResult) )
-    {
-        std::cout << tmp_fResult << std::endl;
-    }
 
 	// test end
 

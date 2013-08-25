@@ -32,7 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="XLib.cpp" />
+		<Unit filename="XLib.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="xDefine.h" />
+		<Unit filename="xString.cpp" />
+		<Unit filename="xString.h" />
+		<Unit filename="xTime.cpp" />
+		<Unit filename="xTime.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

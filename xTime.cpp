@@ -1,8 +1,14 @@
 #include "xTime.h"
 
+#ifdef WIN32
+#using <mscorlib.dll>
+#endif
+
 XSPACE_BEGIN
 
-DBool XTime::getLocalTZOffset(DFloat8 & out_iTZOffset)
+DString XTime::m_strZoneInfo = "";
+
+bool XTime::getLocalTZOffset(DFloat8 & out_iTZOffset)
 {
     struct tm tmp_tmBase;
     tmp_tmBase.tm_year = 1970 - 1900;   // years since 1900
@@ -11,21 +17,35 @@ DBool XTime::getLocalTZOffset(DFloat8 & out_iTZOffset)
     tmp_tmBase.tm_hour = 0;
     tmp_tmBase.tm_min = 0;
     tmp_tmBase.tm_sec = 0;
-    time_t tmp_tUTCTime = 0;
     time_t tmp_tLocalTime = 0;
 
+    bool tmp_bFlag = false;
 #ifdef _BSD_SOURCE
     // Thread safe
+    tmp_bFlag = true;
     if ( NULL == localtime_r(&tmp_tLocalTime, &tmp_tmBase))
     {
         return false;
     }
     out_iTZOffset = tmp_tmBase.tm_gmtoff;
-#else
-    // incomplete
-    out_iTZOffset = 0;
 #endif
-    return true;
+
+#ifdef WIN23
+    tmp_bFlag = true;
+    using namespace System;
+	using namespace Runtime::InteropServices;
+
+	DateTime tmp_dtCurrentDate = DateTime::Now;
+	TimeZone^ tmp_tzLocalZone = TimeZone::CurrentTimeZone;
+	out_iTZOffset = tmp_tLocalTime->GetUtcOffset(tmp_dtCurrentDate).TotalSeconds;
+#endif
+
+    return tmp_bFlag;
+}
+
+void XTime::setZoneinfoPath(const DString & in_strPath)
+{
+    m_strZoneInfo = in_strPath;
 }
 
 XSPACE_END
