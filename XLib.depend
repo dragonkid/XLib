@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1377427509 source:/home/dragonkid/Workspace/XLib/main.cpp
+1377704229 source:/home/dragonkid/Workspace/XLib/main.cpp
 	"XLib.h"
 	<iostream>
 
@@ -8,23 +8,26 @@
 	"xString.h"
 	"xTime.h"
 
-1377442828 /home/dragonkid/Workspace/XLib/xDefine.h
+1377701829 /home/dragonkid/Workspace/XLib/xDefine.h
 	<vector>
 	<string>
 	<ctime>
+	<algorithm>
+	<cctype>
+	<cstdlib>
 
-1377442813 /home/dragonkid/Workspace/XLib/xString.h
+1377702380 /home/dragonkid/Workspace/XLib/xString.h
 	"xDefine.h"
 
-1377442809 /home/dragonkid/Workspace/XLib/xTime.h
+1377443887 /home/dragonkid/Workspace/XLib/xTime.h
 	"xDefine.h"
 
 1377206969 source:/home/dragonkid/Workspace/XLib/XLib.cpp
 	"XLib.h"
 
-1377206969 source:/home/dragonkid/Workspace/XLib/xString.cpp
+1377704735 source:/home/dragonkid/Workspace/XLib/xString.cpp
 	"xString.h"
 
-1377439138 source:/home/dragonkid/Workspace/XLib/xTime.cpp
+1377472990 source:/home/dragonkid/Workspace/XLib/xTime.cpp
 	"xTime.h"
 

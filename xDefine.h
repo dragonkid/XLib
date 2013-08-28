@@ -4,6 +4,9 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <algorithm>
+#include <cctype>
+#include <cstdlib>
 
 #define XSPACE_BEGIN namespace      XLib{
 #define XSPACE_END                  }

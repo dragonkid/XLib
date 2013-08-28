@@ -1,11 +1,11 @@
-#ifndef _XSTRING_H_
-#define _XSTRING_H_
+#ifndef _StringTools_H_
+#define _StringTools_H_
 
 #include "xDefine.h"
 
 XSPACE_BEGIN;
 
-class XString
+class StringTools
 {
 public:
 	// function:	get whether in_str is start with in_strFlag
@@ -114,11 +114,22 @@ public:
 		DString & out_str
 		);
 
-    // incomplete
+    // Function:    Return true if all of the characters are digit
+    //              else return false.
+    //              Return false if in_str is empty.
     static bool isAllDigit(const DString & in_str);
-    static bool isAllLetter(const DString & in_str);
-    static bool isIpAddress(const DString & in_str);
-};	// class XString
+
+    // Function:    Return true if all of the characters are alpha
+    //              else return false.
+    //              Return false if in_str is empty.
+    static bool isAllAlpha(const DString & in_str);
+
+    // Function:    Return true if in_str correspond to IP address format,
+    //              else return false.
+    static bool isValidIPAddress(const DString & in_str);
+
+private:
+};	// class StringTools
 
 XSPACE_END
 

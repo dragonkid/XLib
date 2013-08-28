@@ -17,11 +17,8 @@ int main()
 //	std::string tmp_strB = ";";
 
 	// test start
-	double tmp_dOffset = 0;
-	if ( XLib::XTime::getLocalTZOffset(tmp_dOffset) )
-	{
-		std::cout << tmp_dOffset << std::endl;
-	}
+    std::string tmp_str = "255.1.1a.1";
+    std::cout << XLib::StringTools::isValidIPAddress(tmp_str) << std::endl;
 
 	// test end
 
