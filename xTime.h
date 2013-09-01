@@ -7,6 +7,9 @@ XSPACE_BEGIN
 
 class XTime
 {
+    static DString m_strZoneInfo;
+    XTime();
+    ~XTime();
 public:
     // function:        get local timezone offset
     // in:              none
@@ -36,9 +39,6 @@ public:
         const DString & in_strZoneName,
         DFloat8 & out_iTZOffset
         );
-protected:
-private:
-    static DString m_strZoneInfo;
 };	// class XTime
 
 XSPACE_END

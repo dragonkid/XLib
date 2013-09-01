@@ -17,9 +17,7 @@ int main()
 //	std::string tmp_strB = ";";
 
 	// test start
-    std::string tmp_str = "255.1.1a.1";
-    std::cout << XLib::StringTools::isValidIPAddress(tmp_str) << std::endl;
-
+    XLib::XLogger::instance();
 	// test end
 
 	return 0;

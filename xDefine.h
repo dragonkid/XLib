@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>
+#include <iostream>
 
 #define XSPACE_BEGIN namespace      XLib{
 #define XSPACE_END                  }

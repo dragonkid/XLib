@@ -7,6 +7,8 @@ XSPACE_BEGIN;
 
 class StringTools
 {
+    StringTools();
+    ~StringTools();
 public:
 	// function:	get whether in_str is start with in_strFlag
 	// in:			in_str, in_strFlag

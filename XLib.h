@@ -4,6 +4,7 @@
 #include "xDefine.h"
 #include "xString.h"
 #include "xTime.h"
+#include "xLogger.h"
 
 namespace XLib
 {

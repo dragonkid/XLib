@@ -1,25 +1,27 @@
 # depslib dependency file v1.0
-1377704229 source:/home/dragonkid/Workspace/XLib/main.cpp
+1378044027 source:/home/dragonkid/Workspace/XLib/main.cpp
 	"XLib.h"
 	<iostream>
 
-1377206969 /home/dragonkid/Workspace/XLib/XLib.h
+1378044002 /home/dragonkid/Workspace/XLib/XLib.h
 	"xDefine.h"
 	"xString.h"
 	"xTime.h"
+	"xLogger.h"
 
-1377701829 /home/dragonkid/Workspace/XLib/xDefine.h
+1378043333 /home/dragonkid/Workspace/XLib/xDefine.h
 	<vector>
 	<string>
 	<ctime>
 	<algorithm>
 	<cctype>
 	<cstdlib>
+	<iostream>
 
-1377702380 /home/dragonkid/Workspace/XLib/xString.h
+1378043804 /home/dragonkid/Workspace/XLib/xString.h
 	"xDefine.h"
 
-1377443887 /home/dragonkid/Workspace/XLib/xTime.h
+1378043854 /home/dragonkid/Workspace/XLib/xTime.h
 	"xDefine.h"
 
 1377206969 source:/home/dragonkid/Workspace/XLib/XLib.cpp
@@ -30,4 +32,10 @@
 
 1377472990 source:/home/dragonkid/Workspace/XLib/xTime.cpp
 	"xTime.h"
+
+1378044161 source:/home/dragonkid/Workspace/XLib/xLogger.cpp
+	"xLogger.h"
+
+1378043927 /home/dragonkid/Workspace/XLib/xLogger.h
+	"xDefine.h"
 
