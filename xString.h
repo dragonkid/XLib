@@ -130,6 +130,8 @@ public:
     //              else return false.
     static bool isValidIPAddress(const DString & in_str);
 
+    //
+
 private:
 };	// class StringTools
 
