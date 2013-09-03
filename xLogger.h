@@ -8,17 +8,19 @@ XSPACE_BEGIN
 class XLogger
 {
     static XLogger * m_pLogger;
-    XLogger();
-    ~XLogger();
-public:
-    static XLogger * instance()
+    XLogger()
     {
-        if ( NULL == m_pLogger )
-        {
-            m_pLogger = new XLogger();
-        }
-        return m_pLogger;
+
     }
+    ~XLogger()
+    {
+
+    }
+public:
+    // Enable log.
+    static XLogger * enable();
+    // Disable log.
+    static void disable();
 };
 
 XSPACE_END

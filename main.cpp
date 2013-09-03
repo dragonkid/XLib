@@ -4,23 +4,23 @@
 
 using namespace XLib;
 
-TEST(InterfaceTest, ExtractDirectory)
+TEST(FileOperate, ExtractDirectory)
 {
     ASSERT_EQ("/foo/bar/", FileOperate::extractDirectory("/foo/bar/baz.txt"));
 }
 
-TEST(InterfaceTest, ExtractFilename)
+TEST(FileOperate, ExtractFilename)
 {
     ASSERT_EQ("baz.txt", FileOperate::extractFilename("/foo/bar/baz.txt"));
 }
 
-TEST(InterfaceTest, ExtractFileExtension)
+TEST(FileOperate, ExtractFileExtension)
 {
     ASSERT_EQ(".txt", FileOperate::extractFileExtension("/foo/bar/baz.txt"));
     ASSERT_EQ("", FileOperate::extractFileExtension("/foo/bar/baz"));
 }
 
-TEST(InterfaceTest, ChangeFileExtension)
+TEST(FileOperate, ChangeFileExtension)
 {
     ASSERT_EQ("/foo/bar/baz.dat", FileOperate::changeFileExtension("/foo/bar/baz.txt", ".dat"));
     ASSERT_EQ("/foo/bar/baz", FileOperate::changeFileExtension("/foo/bar/baz.txt", ""));
@@ -31,6 +31,7 @@ int main(int argc, char * argv[])
 {
 	// test start
     //XLib::XLogger::instance();
+
 	// test end
 
     testing::InitGoogleTest(&argc, argv);

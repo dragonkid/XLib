@@ -2,6 +2,7 @@
 #define _StringTools_H_
 
 #include "xDefine.h"
+#include <vector>
 
 XSPACE_BEGIN;
 
@@ -10,7 +11,7 @@ class StringTools
     StringTools();
     ~StringTools();
 public:
-	// function:	get whether in_str is start with in_strFlag
+	// Function:	get whether in_str is start with in_strFlag
 	// in:			in_str, in_strFlag
 	// out:			nop
 	// return:		bool
@@ -25,7 +26,7 @@ public:
 	//				("123", "1234")		=>	false
 	static bool startWith(const DString in_str, const DString in_strFlag);
 
-	// function:	get whether in_str is end with in_strFlag
+	// Function:	get whether in_str is end with in_strFlag
 	// in:			in_str, in_strFlag
 	// out:			nop
 	// return:		bool
@@ -40,7 +41,7 @@ public:
 	//				("123", "1234")		=>	false
 	static bool endWith(const DString in_str, const DString in_strFlag);
 
-	// function:	split the string into vector which is divided by the flag.
+	// Function:	split the string into vector which is divided by the flag.
 	//				"" will not be ignored.
 	//				if string is empty or equal to "" an empty vector will be returned.
 	// in:			in_str, in_strFlag(only one character supported)
@@ -60,7 +61,7 @@ public:
 		std::vector<DString> & out_vec
 		);
 
-	// function:	merge strings in vector into one string separated by flag
+	// Function:	merge strings in vector into one string separated by flag
 	// in:			in_vec, in_strFlag
 	// out:			out_str(will be cleared first; end with in_strFlag)
 	// return:		void
@@ -70,7 +71,7 @@ public:
 		DString & out_str
 		);
 
-	// function:	replace A with B
+	// Function:	replace A with B
 	// in:			inout_str, in_strA, in_strB
 	// out:			inout_str(the string will be modified;
 	//						  return prime string if there is no in_strA)
@@ -80,7 +81,7 @@ public:
 		const DString in_strB
 		);
 
-	// function:	get substr in in_str between in_strStartFlag and in_strEndFlag
+	// Function:	get substr in in_str between in_strStartFlag and in_strEndFlag
 	//				search string from start to end
 	// in:			in_str, in_strStartFlag, in_strEndFlag
 	// out:			out_str(will be cleared first)
@@ -97,19 +98,19 @@ public:
 		DString & out_str
 		);
 
-	// function:	get substr in in_str between in_strStartFlag and in_strEndFlag
+	// Function:	get substr in in_str between in_strStartFlag and in_strEndFlag
 	//				search string from end to start
-	//				reference function subStrS2ENarrow
+	//				reference Function subStrS2ENarrow
 	static bool subStrE2S(const DString & in_str,
 		const DString & in_strStartFlag,
 		const DString & in_strEndFlag,
 		DString & out_str
 		);
 
-	// function:	get substr in in_str between in_strStartFlag and in_strEndFlag
+	// Function:	get substr in in_str between in_strStartFlag and in_strEndFlag
 	//				in_strStartFlag first occurence in in_str
 	//				in_strEndFlag last occurence in in_str
-	//				reference function subStrS2ENarrow
+	//				reference Function subStrS2ENarrow
 	static bool subStrWide(const DString & in_str,
 		const DString & in_strStartFlag,
 		const DString & in_strEndFlag,

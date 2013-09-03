@@ -1,4 +1,6 @@
 #include "xString.h"
+#include <cctype>
+#include <algorithm>
 
 static bool isValidIPPart(const DString & in_str)
 {

@@ -10,9 +10,6 @@
 namespace XLib
 {
 
-	class XString;
-	class XTime;
-
 }	// namespace XLib
 
 #endif

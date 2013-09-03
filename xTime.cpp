@@ -50,4 +50,17 @@ void XTime::setZoneinfoPath(const DString & in_strPath)
     m_strZoneInfo = in_strPath;
 }
 
+bool XTime::getTZOffsetByZonename( const DString & in_strZoneName, DFloat8 & out_iTZOffset )
+{
+// TODO (dragonkid#1#): This Function will be complete later.
+    return true;
+}
+
+DTime_t XTime::getMilliTime()
+{
+    timeb t;
+    ftime(&t);
+    return (1000 * static_cast<DTime_t>(t.time) + t.millitm);
+}
+
 XSPACE_END
