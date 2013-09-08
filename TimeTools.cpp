@@ -1,9 +1,9 @@
 #include "TimeTools.h"
 
-#ifdef WIN32
-// Should be built with /clr
-#using <mscorlib.dll>
-#endif
+//#ifdef WIN32
+//// Should be built with /clr
+//#using <mscorlib.dll>
+//#endif
 
 TOOLSPACE_BEGIN
 
@@ -34,12 +34,14 @@ bool TimeTools::getLocalTZOffset(DFloat8 & out_iTZOffset)
 
 #ifdef WIN32
     tmp_bFlag = true;
-    using namespace System;
-	using namespace Runtime::InteropServices;
-
-	DateTime tmp_dtCurrentDate = DateTime::Now;
-	TimeZone^ tmp_tzLocalZone = TimeZone::CurrentTimeZone;
-	out_iTZOffset = tmp_tzLocalZone->GetUtcOffset(tmp_dtCurrentDate).TotalSeconds;
+	struct tm t1, t2;
+	time_t now, mytime, gmtime;
+	time( & now );
+	_localtime64_s( &t1, &now );
+	_localtime64_s( &t2, &now );
+	mytime = mktime(&t1);
+	gmtime = _mkgmtime(&t2);
+	out_iTZOffset = static_cast<DFloat8>(gmtime - mytime);
 #endif
 
     return tmp_bFlag;

@@ -8,33 +8,40 @@
 
 using namespace DTools;
 
+// FileTools
 TEST(FileTools, ExtractDirectory)
 {
-    ASSERT_EQ("/foo/bar/", FileTools::extractDirectory("/foo/bar/baz.txt"));
+    EXPECT_EQ("/foo/bar/", FileTools::extractDirectory("/foo/bar/baz.txt"));
 }
-
 TEST(FileTools, ExtractFilename)
 {
-    ASSERT_EQ("baz.txt", FileTools::extractFilename("/foo/bar/baz.txt"));
+    EXPECT_EQ("baz.txt", FileTools::extractFilename("/foo/bar/baz.txt"));
 }
-
 TEST(FileTools, ExtractFileExtension)
 {
-    ASSERT_EQ(".txt", FileTools::extractFileExtension("/foo/bar/baz.txt"));
-    ASSERT_EQ("", FileTools::extractFileExtension("/foo/bar/baz"));
+    EXPECT_EQ(".txt", FileTools::extractFileExtension("/foo/bar/baz.txt"));
+    EXPECT_EQ("", FileTools::extractFileExtension("/foo/bar/baz"));
 }
-
 TEST(FileTools, ChangeFileExtension)
 {
-    ASSERT_EQ("/foo/bar/baz.dat", FileTools::changeFileExtension("/foo/bar/baz.txt", ".dat"));
-    ASSERT_EQ("/foo/bar/baz", FileTools::changeFileExtension("/foo/bar/baz.txt", ""));
-    ASSERT_EQ("/foo/bar/baz.txt", FileTools::changeFileExtension("/foo/bar/baz", ".txt"));
+    EXPECT_EQ("/foo/bar/baz.dat", FileTools::changeFileExtension("/foo/bar/baz.txt", ".dat"));
+    EXPECT_EQ("/foo/bar/baz", FileTools::changeFileExtension("/foo/bar/baz.txt", ""));
+    EXPECT_EQ("/foo/bar/baz.txt", FileTools::changeFileExtension("/foo/bar/baz", ".txt"));
+}
+// TimeTools
+TEST(TimeTools, GetTZOffsetByZonename)
+{
+	DFloat8 zoneOffset = 0;
+	ASSERT_TRUE(TimeTools::getLocalTZOffset(zoneOffset));
+	EXPECT_EQ(28800, zoneOffset);
 }
 
 int main(int argc, char * argv[])
 {
 	// test start
-
+	DFloat8 tmp;
+	DTools::TimeTools::getLocalTZOffset(tmp);
+	LOG_TO_CONSOLE("Timezone offset is: ", tmp);
 	// test end
 
     testing::InitGoogleTest(&argc, argv);

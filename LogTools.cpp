@@ -34,14 +34,14 @@ const LOG_TYPE LogTools::getLogType() const
     return m_eLogType;
 }
 
-void LogTools::setLogLevel(LOG_LEVEL in_eLogLevel)
+void LogTools::setPath( const DString & in_strPath )
 {
-    m_eLogLevel = in_eLogLevel;
+	m_strPath = in_strPath;
 }
 
-const LOG_LEVEL LogTools::getLogLevel() const
+const DString LogTools::getPath() const
 {
-    return m_eLogLevel;
+	return m_strPath;
 }
 
 TOOLSPACE_END

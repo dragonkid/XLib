@@ -3,12 +3,13 @@
 
 #include "ToolsDefine.h"
 #include <iostream>
+#include <ctime>
 
 TOOLSPACE_BEGIN
 
-// A very simple log tool
+// A simple debug tool.
 #define LOG_TO_CONSOLE(explanation, value)\
-    std::cout << (explanation) << (output) << std::endl;
+    std::cout << (explanation) << (value) << std::endl;
 
 typedef enum _LOG_TYPE
 {
@@ -28,11 +29,10 @@ typedef enum _LOG_LEVEL
 class LogTools
 {
     LOG_TYPE        m_eLogType;     // ALL defaule
-    LOG_LEVEL       m_eLogLevel;    // Info default
     // Default value:
     // Linux    /home/LogFiles
     // Windows  C:\LogFiles
-    DString         m_strFilePath;
+    DString         m_strPath;
 
     LogTools()
     {
@@ -48,14 +48,13 @@ public:
     static LogTools *    m_pLogger;
 
     // Set log type.
-    void setLogType(LOG_TYPE in_eLogType);
+    void setLogType(const LOG_TYPE in_eLogType);
     // Get log type.
     const LOG_TYPE getLogType() const;
-    // Set log level.
-    void setLogLevel(LOG_LEVEL in_eLogLevel);
-    // Get log level.
-    const LOG_LEVEL getLogLevel() const;
-
+	// Set path.
+	void setPath(const DString &);
+	// Get path.
+	const DString getPath() const;
 };
 
 TOOLSPACE_END
