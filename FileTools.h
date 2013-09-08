@@ -1,14 +1,14 @@
-#ifndef _XFILE_H_
-#define _XFILE_H_
+#ifndef _FILETOOLS_H_
+#define _FILETOOLS_H_
 
-#include "xDefine.h"
+#include "ToolsDefine.h"
 
-XSPACE_BEGIN
+TOOLSPACE_BEGIN
 
-class FileOperate
+class FileTools
 {
-    FileOperate();
-    ~FileOperate();
+    FileTools();
+    ~FileTools();
 public:
     // Function:    Returns everything, including the trailing path separator,
     //              except the filename part of the path.
@@ -34,6 +34,6 @@ public:
                                        char in_cDelimiter = '/');
 };
 
-XSPACE_END
+TOOLSPACE_END
 
 #endif

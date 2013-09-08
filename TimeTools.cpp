@@ -1,15 +1,15 @@
-#include "xTime.h"
+#include "TimeTools.h"
 
 #ifdef WIN32
 // Should be built with /clr
 #using <mscorlib.dll>
 #endif
 
-XSPACE_BEGIN
+TOOLSPACE_BEGIN
 
-DString XTime::m_strZoneInfo = "";
+DString TimeTools::m_strZoneInfo = "";
 
-bool XTime::getLocalTZOffset(DFloat8 & out_iTZOffset)
+bool TimeTools::getLocalTZOffset(DFloat8 & out_iTZOffset)
 {
 	out_iTZOffset = 0;
 	bool tmp_bFlag = false;
@@ -45,22 +45,22 @@ bool XTime::getLocalTZOffset(DFloat8 & out_iTZOffset)
     return tmp_bFlag;
 }
 
-void XTime::setZoneinfoPath(const DString & in_strPath)
+void TimeTools::setZoneinfoPath(const DString & in_strPath)
 {
     m_strZoneInfo = in_strPath;
 }
 
-bool XTime::getTZOffsetByZonename( const DString & in_strZoneName, DFloat8 & out_iTZOffset )
+bool TimeTools::getTZOffsetByZonename( const DString & in_strZoneName, DFloat8 & out_iTZOffset )
 {
 // TODO (dragonkid#1#): This Function will be complete later.
     return true;
 }
 
-DTime_t XTime::getMilliTime()
+DTime_t TimeTools::getMilliTime()
 {
     timeb t;
     ftime(&t);
     return (1000 * static_cast<DTime_t>(t.time) + t.millitm);
 }
 
-XSPACE_END
+TOOLSPACE_END

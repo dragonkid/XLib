@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1378569125 source:/home/dragonkid/Workspace/DTools/FileTools.cpp
+	"FileTools.h"
+
+1378569448 /home/dragonkid/Workspace/DTools/FileTools.h
+	"ToolsDefine.h"
+
+1378569945 /home/dragonkid/Workspace/DTools/ToolsDefine.h
+	<string>
+
+1378569125 source:/home/dragonkid/Workspace/DTools/LogTools.cpp
+	"LogTools.h"
+	<sys/timeb.h>
+	<stdio.h>
+
+1378616627 /home/dragonkid/Workspace/DTools/LogTools.h
+	"ToolsDefine.h"
+	<iostream>
+
+1378569809 source:/home/dragonkid/Workspace/DTools/main.cpp
+	"ToolsDefine.h"
+	"FileTools.h"
+	"LogTools.h"
+	"StringTools.h"
+	"TimeTools.h"
+	<iostream>
+	<gtest/gtest.h>
+
+1378569179 /home/dragonkid/Workspace/DTools/StringTools.h
+	"ToolsDefine.h"
+	<vector>
+
+1378569435 /home/dragonkid/Workspace/DTools/TimeTools.h
+	"ToolsDefine.h"
+	<ctime>
+	<sys/timeb.h>
+
+1378569809 source:/home/dragonkid/Workspace/DTools/StringTools.cpp
+	"StringTools.h"
+	<cctype>
+	<algorithm>
+
+1378569125 source:/home/dragonkid/Workspace/DTools/TimeTools.cpp
+	"TimeTools.h"
+

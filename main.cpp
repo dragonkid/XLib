@@ -1,36 +1,39 @@
-#include "XLib.h"
+#include "ToolsDefine.h"
+#include "FileTools.h"
+#include "LogTools.h"
+#include "StringTools.h"
+#include "TimeTools.h"
 #include <iostream>
 #include <gtest/gtest.h>
 
-using namespace XLib;
+using namespace DTools;
 
-TEST(FileOperate, ExtractDirectory)
+TEST(FileTools, ExtractDirectory)
 {
-    ASSERT_EQ("/foo/bar/", FileOperate::extractDirectory("/foo/bar/baz.txt"));
+    ASSERT_EQ("/foo/bar/", FileTools::extractDirectory("/foo/bar/baz.txt"));
 }
 
-TEST(FileOperate, ExtractFilename)
+TEST(FileTools, ExtractFilename)
 {
-    ASSERT_EQ("baz.txt", FileOperate::extractFilename("/foo/bar/baz.txt"));
+    ASSERT_EQ("baz.txt", FileTools::extractFilename("/foo/bar/baz.txt"));
 }
 
-TEST(FileOperate, ExtractFileExtension)
+TEST(FileTools, ExtractFileExtension)
 {
-    ASSERT_EQ(".txt", FileOperate::extractFileExtension("/foo/bar/baz.txt"));
-    ASSERT_EQ("", FileOperate::extractFileExtension("/foo/bar/baz"));
+    ASSERT_EQ(".txt", FileTools::extractFileExtension("/foo/bar/baz.txt"));
+    ASSERT_EQ("", FileTools::extractFileExtension("/foo/bar/baz"));
 }
 
-TEST(FileOperate, ChangeFileExtension)
+TEST(FileTools, ChangeFileExtension)
 {
-    ASSERT_EQ("/foo/bar/baz.dat", FileOperate::changeFileExtension("/foo/bar/baz.txt", ".dat"));
-    ASSERT_EQ("/foo/bar/baz", FileOperate::changeFileExtension("/foo/bar/baz.txt", ""));
-    ASSERT_EQ("/foo/bar/baz.txt", FileOperate::changeFileExtension("/foo/bar/baz", ".txt"));
+    ASSERT_EQ("/foo/bar/baz.dat", FileTools::changeFileExtension("/foo/bar/baz.txt", ".dat"));
+    ASSERT_EQ("/foo/bar/baz", FileTools::changeFileExtension("/foo/bar/baz.txt", ""));
+    ASSERT_EQ("/foo/bar/baz.txt", FileTools::changeFileExtension("/foo/bar/baz", ".txt"));
 }
 
 int main(int argc, char * argv[])
 {
 	// test start
-    //XLib::XLogger::instance();
 
 	// test end
 

@@ -1,10 +1,10 @@
-#ifndef _StringTools_H_
-#define _StringTools_H_
+#ifndef _STRINGTOOLS_H_
+#define _STRINGTOOLS_H_
 
-#include "xDefine.h"
+#include "ToolsDefine.h"
 #include <vector>
 
-XSPACE_BEGIN;
+TOOLSPACE_BEGIN
 
 class StringTools
 {
@@ -136,6 +136,6 @@ public:
 private:
 };	// class StringTools
 
-XSPACE_END
+TOOLSPACE_END
 
 #endif

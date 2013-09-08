@@ -1,11 +1,11 @@
-#include "xString.h"
+#include "StringTools.h"
 #include <cctype>
 #include <algorithm>
 
 static bool isValidIPPart(const DString & in_str)
 {
     if ( in_str.empty()
-        || !XLib::StringTools::isAllDigit(in_str)
+        || !DTools::StringTools::isAllDigit(in_str)
         || ((in_str.length() > 1) && (in_str.at(0) == '0')) )
     {
         return false;
@@ -18,7 +18,7 @@ static bool isValidIPPart(const DString & in_str)
     return true;
 }
 
-XSPACE_BEGIN
+TOOLSPACE_BEGIN
 
 bool StringTools::startWith(const DString in_str, const DString in_strFlag)
 {
@@ -204,4 +204,4 @@ bool StringTools::isValidIPAddress(const DString & in_str)
     return true;
 }
 
-XSPACE_END
+TOOLSPACE_END

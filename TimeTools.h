@@ -1,17 +1,17 @@
-#ifndef _XTIME_H_
-#define _XTIME_H_
+#ifndef _TIMETOOLS_H_
+#define _TIMETOOLS_H_
 
-#include "xDefine.h"
+#include "ToolsDefine.h"
 #include <ctime>
 #include <sys/timeb.h>
 
-XSPACE_BEGIN
+TOOLSPACE_BEGIN
 
-class XTime
+class TimeTools
 {
     static DString m_strZoneInfo;
-    XTime();
-    ~XTime();
+    TimeTools();
+    ~TimeTools();
 public:
     // Function:        Get local timezone offset
     // in:              none
@@ -42,8 +42,8 @@ public:
     // Function:        Returns the current time as milliseconds since the Epoch,
     //                  1970-01-01 00:00:00 +0000 (UTC)
     static DTime_t getMilliTime();
-};	// class XTime
+};	// class TimeTools
 
-XSPACE_END
+TOOLSPACE_END
 
 #endif
