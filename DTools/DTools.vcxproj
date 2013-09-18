@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Documents and Settings\DragonKid\My Documents\GitHub\gtest-1.6.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Documents and Settings\DragonKid\My Documents\GitHub\gtest-1.6.0\include\gtest;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Workplace\gtest\include\;C:\Documents and Settings\DragonKid\My Documents\GitHub\gtest-1.6.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Workplace\gtest\include\gtest;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
