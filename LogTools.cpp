@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <ctime>
 #include <stdarg.h>
+#include <sstream>
 
 TOOLSPACE_BEGIN
 
@@ -33,13 +34,14 @@ DString LogTools::getTimeStamp()
 	DString tmp_strDate(buf);
 	timeb tb;
 	ftime(&tb);
-	sprintf(buf,"%d",tb.millitm);
+	sprintf(buf,"%03d",tb.millitm);
 	return tmp_strDate + "_" + tmp_strTime + "." + buf;
 }
 
 LogTools::LogTools()
 {
 	m_ofFileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+	m_bLogHeader = true;
 }
 
 LogTools::~LogTools()
@@ -55,7 +57,6 @@ DString LogTools::getLogPath()
 	return m_strLogPath;
 }
 
-
 LogTools * LogTools::enableLogger( DString in_strLogPath )
 {
 	m_bEnable = true;
@@ -69,7 +70,6 @@ LogTools * LogTools::enableLogger( DString in_strLogPath )
 		m_strLogPath = in_strLogPath;
 	}
 	DString tmp_strFilename = in_strLogPath + "debug_" + getTimeStamp() + ".log";
-	LOG_TO_CONSOLE("File name: ", tmp_strFilename);
 	try
 	{
 		m_ofFileStream.open(tmp_strFilename, std::ios::app);
@@ -86,10 +86,35 @@ void LogTools::disableLogger()
 {
 	m_bEnable = false;
 	if ( NULL != m_pLogger )
-	{
+	{	
 		delete m_pLogger;
 		m_pLogger = NULL;
 	}
+}
+
+DString LogTools::composeLogHeader(char * filename, long linenum, char * funcname)
+{
+	std::stringstream tmp_buf;
+	DString tmp_strFILE(filename);
+	DString tmp_strFilename = "";
+#ifdef WIN32
+	tmp_strFilename = FileTools::extractFilename(tmp_strFILE, '\\');
+#else
+	tmp_strFilename = FileTools::extractFilename(tmp_strFILE, '/');
+#endif // WIN32
+	tmp_buf << "[" << getTimeStamp() << "][" << tmp_strFilename << "][" << linenum << "][" << funcname << "] >> ";
+	return tmp_buf.str();
+}
+
+LogTools & LogTools::appendLogHeader( char * filename, long linenum, char * funcname )
+{
+	if ( m_bLogHeader )
+	{
+		//LOG_TO_CONSOLE("Log header", composeLogHeader());
+		m_ofFileStream << composeLogHeader(filename, linenum, funcname); 
+		m_bLogHeader = false;
+	}
+	return (*this);
 }
 
 TOOLSPACE_END

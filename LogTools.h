@@ -21,12 +21,16 @@ class LogTools
 	// Windows  "C:\\logs\\"
 	static DString		m_strLogPath;
 	static bool			m_bEnable;
+	bool				m_bLogHeader;
 
     LogTools();
     LogTools(const LogTools &);
     LogTools & operator = (const LogTools &);
     virtual ~LogTools();
+	// Get timestamp.
 	static DString getTimeStamp();
+	// Compose log header.
+	DString composeLogHeader(char * filename, long linenum, char * funcname);
 public:
 	// Get log file path.
 	DString getLogPath();
@@ -54,9 +58,12 @@ public:
 		if ( m_bEnable )
 		{
 			(*_Pfn)(m_ofFileStream);
+			m_bLogHeader = true;
 		}
 		return (*this);
 	}
+	// Write debug message to log file.
+	LogTools & appendLogHeader(char * filename, long linenum, char * funcname);
 };
 
 TOOLSPACE_END

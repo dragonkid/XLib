@@ -5,6 +5,7 @@
 #include "TimeTools.h"
 #include <iostream>
 #include <gtest/gtest.h>
+#include <vector>
 
 using namespace DTools;
 
@@ -66,9 +67,20 @@ TEST(StringTools, ValueToString)
 int main(int argc, char * argv[])
 {
 	// test start
-	LogTools * pLogger = LogTools::enableLogger();
-	(*pLogger) << 12312412 << "asdfasdfa" << std::endl;
-	(*pLogger) << "asdfas" << std::endl;
+	DLOGGER_INIT;
+	DLOGGER << 12312412 << "asdfasdfa" << std::endl;
+	DLOGGER << "asdfas" << std::endl;
+	std::vector<std::string> tmp_vecTest;
+	tmp_vecTest.push_back("Show me the money.");
+	tmp_vecTest.push_back("Black sheep wall.");
+	DLOGGER << "tmp_vecTest:\n";
+	for (std::vector<std::string>::size_type i = 0; i < tmp_vecTest.size(); ++i)
+	{
+		DLOGGER << "\t" + DTools::StringTools::valueToString(i + 1) + ". " << tmp_vecTest.at(i) << "\n";
+	}
+	DLOGGER << std::endl;
+	DLOGGER << "test" << std::endl;
+	DLOGGER_END;
 	// test end
 
     testing::InitGoogleTest(&argc, argv);
