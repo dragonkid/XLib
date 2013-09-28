@@ -3,6 +3,7 @@
 
 #include "ToolsDefine.h"
 #include <vector>
+#include <sstream>
 
 TOOLSPACE_BEGIN
 
@@ -131,9 +132,17 @@ public:
     //              else return false.
     static bool isValidIPAddress(const DString & in_str);
 
-    //
+    // Function:	Convert value to string.
+	template<typename T> 
+	static DString valueToString( const T & value )
+	{
+		std::ostringstream ost;
+		ost << value;
+		return ost.str();
+	}
 
 private:
+	static bool isValidIPPart(const DString & in_str);
 };	// class StringTools
 
 TOOLSPACE_END

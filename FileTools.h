@@ -32,6 +32,10 @@ public:
     //              "/foo/bar/baz", ".txt"      =>  "/foo/bar/baz.txt"
     static DString changeFileExtension(const DString & in_strPath, const DString & in_strExt,
                                        char in_cDelimiter = '/');
+	
+	// Function:	Make directory recursively.
+	//				Use dos command or shell command.
+	static bool makeDirectory(DString in_strDirectory);
 };
 
 TOOLSPACE_END

@@ -3,7 +3,6 @@
 
 #include "ToolsDefine.h"
 #include <iostream>
-#include <ctime>
 
 TOOLSPACE_BEGIN
 
@@ -11,50 +10,53 @@ TOOLSPACE_BEGIN
 #define LOG_TO_CONSOLE(explanation, value)\
     std::cout << (explanation) << (value) << std::endl;
 
-typedef enum _LOG_TYPE
-{
-    CONSOLE      = 0,
-    FILE         = 1,
-    ALL
-}LOG_TYPE;
-
-typedef enum _LOG_LEVEL
-{
-    INFO          = 0,
-    WARNING       = 1,
-    ERROR         = 2,
-    END
-}LOG_LEVEL;
-
+// A complete debug tool.
 class LogTools
 {
-    LOG_TYPE        m_eLogType;     // ALL defaule
-    // Default value:
-    // Linux    /home/LogFiles
-    // Windows  C:\LogFiles
-    DString         m_strPath;
+	static LogTools *	m_pLogger;
+	static DOfstream	m_ofFileStream;
+	// Initialize the log tool.
+	// Default value:
+	// Linux    "/home/logs"
+	// Windows  "C:\\logs\\"
+	static DString		m_strLogPath;
+	static bool			m_bEnable;
 
-    LogTools()
-    {
-
-    }
+    LogTools();
     LogTools(const LogTools &);
     LogTools & operator = (const LogTools &);
-    virtual ~LogTools()
-    {
-
-    }
+    virtual ~LogTools();
+	static DString getTimeStamp();
 public:
-    static LogTools *    m_pLogger;
-
-    // Set log type.
-    void setLogType(const LOG_TYPE in_eLogType);
-    // Get log type.
-    const LOG_TYPE getLogType() const;
-	// Set path.
-	void setPath(const DString &);
-	// Get path.
-	const DString getPath() const;
+	// Get log file path.
+	DString getLogPath();
+	// Enable the logger.
+#ifdef WIN32
+	static LogTools * enableLogger(const DString in_strLogPath = "C:\\logs\\");
+#else
+	static LogTools * enableLogger(const DString in_strLogPath = "/home/logs/");
+#endif
+	// Disable the logger.
+	static void disableLogger();
+	// Write log to log file.
+	template<typename T>
+	LogTools & operator<<(const T & value)
+	{
+		if ( m_bEnable )
+		{
+			m_ofFileStream << value;
+		}
+		return (*this);
+	}
+	// End write log to log file.
+	LogTools & operator<<(std::ostream & (*_Pfn)(std::ostream &))
+	{
+		if ( m_bEnable )
+		{
+			(*_Pfn)(m_ofFileStream);
+		}
+		return (*this);
+	}
 };
 
 TOOLSPACE_END

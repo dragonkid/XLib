@@ -1,4 +1,6 @@
 #include "FileTools.h"
+#include <stdlib.h>
+#include <direct.h>
 
 TOOLSPACE_BEGIN
 
@@ -28,6 +30,26 @@ DString FileTools::changeFileExtension(const DString & in_strPath, const DString
     return extractDirectory(in_strPath, in_cDelimiter)
             + tmp_strFilename.substr(0, tmp_strFilename.find_last_of('.'))
             + in_strExt;
+}
+
+bool FileTools::makeDirectory( DString in_strDirectory )
+{
+	if (0 == chdir(in_strDirectory.c_str()))
+	{
+		return true;
+	}
+	DString tmp_strCmd = "";
+#ifdef WIN32
+	tmp_strCmd = "md " + in_strDirectory;
+#else
+	tmp_strCmd = "mkdir " + in_strDirectory;
+#endif
+	int tmp_iStatus = system(tmp_strCmd.c_str());
+	if ( 0 != tmp_iStatus)
+	{
+		return false;
+	}
+	return true;
 }
 
 TOOLSPACE_END

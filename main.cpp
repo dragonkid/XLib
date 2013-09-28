@@ -28,6 +28,26 @@ TEST(FileTools, ChangeFileExtension)
     EXPECT_EQ("/foo/bar/baz", FileTools::changeFileExtension("/foo/bar/baz.txt", ""));
     EXPECT_EQ("/foo/bar/baz.txt", FileTools::changeFileExtension("/foo/bar/baz", ".txt"));
 }
+
+//TEST(FileTools, MakeDirectory)
+//{
+//#ifdef WIN32
+//	EXPECT_EQ(true, FileTools::makeDirectory("C:\\logs\\"));
+//	EXPECT_EQ(true, FileTools::makeDirectory("C:\\logs\\"));
+//	EXPECT_EQ(false, FileTools::makeDirectory(""));
+//	EXPECT_EQ(false, FileTools::makeDirectory("C:\\logs/a"));
+//	EXPECT_EQ(false, FileTools::makeDirectory("/home/logs\a"));
+//	EXPECT_EQ(false, FileTools::makeDirectory("/home/logs"));
+//#else
+//	EXPECT_EQ(false, FileTools::makeDirectory("C:\\logs\\"));
+//	EXPECT_EQ(false, FileTools::makeDirectory(""));	
+//	EXPECT_EQ(false, FileTools::makeDirectory("C:\\logs/a"));
+//	EXPECT_EQ(false, FileTools::makeDirectory("/home/logs\a"));
+//	EXPECT_EQ(true, FileTools::makeDirectory("/home/logs"));
+//	EXPECT_EQ(true, FileTools::makeDirectory("/home/logs"));
+//#endif
+//}
+
 // TimeTools
 TEST(TimeTools, GetTZOffsetByZonename)
 {
@@ -36,12 +56,19 @@ TEST(TimeTools, GetTZOffsetByZonename)
 	EXPECT_EQ(28800, zoneOffset);
 }
 
+// StringTools
+TEST(StringTools, ValueToString)
+{
+	EXPECT_EQ("123.456", StringTools::valueToString(123.456));
+	EXPECT_EQ("123", StringTools::valueToString(123));
+}
+
 int main(int argc, char * argv[])
 {
 	// test start
-	DFloat8 tmp;
-	DTools::TimeTools::getLocalTZOffset(tmp);
-	LOG_TO_CONSOLE("Timezone offset is: ", tmp);
+	LogTools * pLogger = LogTools::enableLogger();
+	(*pLogger) << 12312412 << "asdfasdfa" << std::endl;
+	(*pLogger) << "asdfas" << std::endl;
 	// test end
 
     testing::InitGoogleTest(&argc, argv);

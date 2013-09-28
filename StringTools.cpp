@@ -2,22 +2,6 @@
 #include <cctype>
 #include <algorithm>
 
-static bool isValidIPPart(const DString & in_str)
-{
-    if ( in_str.empty()
-        || !DTools::StringTools::isAllDigit(in_str)
-        || ((in_str.length() > 1) && (in_str.at(0) == '0')) )
-    {
-        return false;
-    }
-    int tmp_i = atoi(in_str.c_str());
-    if ( (tmp_i < 0) || (tmp_i > 255) )
-    {
-        return false;
-    }
-    return true;
-}
-
 TOOLSPACE_BEGIN
 
 bool StringTools::startWith(const DString in_str, const DString in_strFlag)
@@ -202,6 +186,22 @@ bool StringTools::isValidIPAddress(const DString & in_str)
         if ( !isValidIPPart(tmp_vecIPPart.at(i)) ) return false;
     }
     return true;
+}
+
+bool StringTools::isValidIPPart(const DString & in_str)
+{
+	if ( in_str.empty()
+		|| !DTools::StringTools::isAllDigit(in_str)
+		|| ((in_str.length() > 1) && (in_str.at(0) == '0')) )
+	{
+		return false;
+	}
+	int tmp_i = atoi(in_str.c_str());
+	if ( (tmp_i < 0) || (tmp_i > 255) )
+	{
+		return false;
+	}
+	return true;
 }
 
 TOOLSPACE_END
