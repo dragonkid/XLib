@@ -11,6 +11,12 @@ TOOLSPACE_BEGIN
     std::cout << (explanation) << (value) << std::endl;
 
 // A complete debug tool.
+
+// Macros of log.
+#define DLOGGER_INIT DTools::LogTools * pLogger = DTools::LogTools::enableLogger();
+#define DLOGGER (*pLogger).appendLogHeader(__FILE__, __LINE__, __FUNCTION__)
+#define DLOGGER_END pLogger->disableLogger();
+
 class LogTools
 {
 	static LogTools *	m_pLogger;
@@ -22,6 +28,7 @@ class LogTools
 	static DString		m_strLogPath;
 	static bool			m_bEnable;
 	bool				m_bLogHeader;
+	flowid_type			m_uiFlowID;
 
     LogTools();
     LogTools(const LogTools &);

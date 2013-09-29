@@ -11,10 +11,7 @@
 #define DEBUGLOG_LINE(x) DEBUGLOG_LINE2(x)
 #define DEBUGLOG_LINE2(x) #x
 
-// Macros of log.
-#define DLOGGER_INIT LogTools * pLogger = LogTools::enableLogger();
-#define DLOGGER (*pLogger).appendLogHeader(__FILE__, __LINE__, __FUNCTION__)
-#define DLOGGER_END pLogger->disableLogger();
+typedef unsigned long long			flowid_type;
 
 typedef std::string                 DString;
 typedef int                         DInt4;

@@ -80,6 +80,10 @@ int main(int argc, char * argv[])
 	}
 	DLOGGER << std::endl;
 	DLOGGER << "test" << std::endl;
+	//for (;;)
+	//{
+	//	DLOGGER << "asdfasasdfasdfasdafddddddddddddddddddddddddddddddddd" << std::endl;
+	//}
 	DLOGGER_END;
 	// test end
 
