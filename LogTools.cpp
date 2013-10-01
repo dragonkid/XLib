@@ -57,9 +57,58 @@ DString LogTools::getLogPath()
 	return m_strLogPath;
 }
 
-LogTools * LogTools::enableLogger( DString in_strLogPath )
+LogTools * LogTools::enableLogger( const DString in_strLogPath )
 {
 	m_bEnable = true;
+	if ( openLogFile(in_strLogPath) )
+	{
+		return m_pLogger;
+	}
+	return NULL;
+}
+
+void LogTools::disableLogger()
+{
+	m_bEnable = false;
+	if ( NULL != m_pLogger )
+	{	
+		delete m_pLogger;
+		m_pLogger = NULL;
+	}
+}
+
+DString LogTools::composeLogHeader(const char * filename, const long linenum, const char * funcname)
+{
+	std::stringstream tmp_buf;
+	DString tmp_strFILE(filename);
+	DString tmp_strFilename = "";
+#ifdef WIN32
+	tmp_strFilename = FileTools::extractFilename(tmp_strFILE, '\\');
+#else
+	tmp_strFilename = FileTools::extractFilename(tmp_strFILE, '/');
+#endif // WIN32
+	tmp_buf << "[" << getTimeStamp() << "][" << tmp_strFilename << "][" << linenum << "][" << funcname << "] >> ";
+	return tmp_buf.str();
+}
+
+LogTools & LogTools::appendLogHeader( const char * filename, const long linenum, const char * funcname )
+{
+	if ( m_bLogHeader )
+	{
+		if ( whetherExceedLimit(MAX_LOG_FILE_SIZE) )
+		{
+			// File size exceed limit. Need to open a new file.
+			m_ofFileStream.close();
+			(void)openLogFile(m_strLogPath);
+		}
+		m_ofFileStream << composeLogHeader(filename, linenum, funcname); 
+		m_bLogHeader = false;
+	}
+	return (*this);
+}
+
+bool LogTools::openLogFile( const DString & in_strLogPath )
+{
 	// Use default file path when the path parameter is invalid.
 	if ( false == FileTools::makeDirectory(in_strLogPath) )
 	{
@@ -77,44 +126,19 @@ LogTools * LogTools::enableLogger( DString in_strLogPath )
 	catch (DOfstream::failure e)
 	{
 		LOG_TO_CONSOLE("", "Open file failed.");
+		return false;
 	}
-
-	return m_pLogger;
+	return true;
 }
 
-void LogTools::disableLogger()
+bool LogTools::whetherExceedLimit(DStreamOff in_uiSizeLimit )
 {
-	m_bEnable = false;
-	if ( NULL != m_pLogger )
-	{	
-		delete m_pLogger;
-		m_pLogger = NULL;
-	}
-}
-
-DString LogTools::composeLogHeader(char * filename, long linenum, char * funcname)
-{
-	std::stringstream tmp_buf;
-	DString tmp_strFILE(filename);
-	DString tmp_strFilename = "";
-#ifdef WIN32
-	tmp_strFilename = FileTools::extractFilename(tmp_strFILE, '\\');
-#else
-	tmp_strFilename = FileTools::extractFilename(tmp_strFILE, '/');
-#endif // WIN32
-	tmp_buf << "[" << getTimeStamp() << "][" << tmp_strFilename << "][" << linenum << "][" << funcname << "] >> ";
-	return tmp_buf.str();
-}
-
-LogTools & LogTools::appendLogHeader( char * filename, long linenum, char * funcname )
-{
-	if ( m_bLogHeader )
+	DStreamOff tmp_uiFileSize = m_ofFileStream.tellp();
+	if ( tmp_uiFileSize > in_uiSizeLimit )
 	{
-		//LOG_TO_CONSOLE("Log header", composeLogHeader());
-		m_ofFileStream << composeLogHeader(filename, linenum, funcname); 
-		m_bLogHeader = false;
+		return true;
 	}
-	return (*this);
+	return false;
 }
 
 TOOLSPACE_END

@@ -17,6 +17,8 @@ TOOLSPACE_BEGIN
 #define DLOGGER (*pLogger).appendLogHeader(__FILE__, __LINE__, __FUNCTION__)
 #define DLOGGER_END pLogger->disableLogger();
 
+#define MAX_LOG_FILE_SIZE (30 * 1000 * 1000)	// 30M
+
 class LogTools
 {
 	static LogTools *	m_pLogger;
@@ -37,7 +39,11 @@ class LogTools
 	// Get timestamp.
 	static DString getTimeStamp();
 	// Compose log header.
-	DString composeLogHeader(char * filename, long linenum, char * funcname);
+	DString composeLogHeader(const char * filename, const long linenum, const char * funcname);
+	// Open log file.
+	static bool openLogFile(const DString & in_strLogPath);
+	// Whether log file size exceed limit.
+	bool whetherExceedLimit(DStreamOff in_uiSizeLimit);
 public:
 	// Get log file path.
 	DString getLogPath();
@@ -70,7 +76,7 @@ public:
 		return (*this);
 	}
 	// Write debug message to log file.
-	LogTools & appendLogHeader(char * filename, long linenum, char * funcname);
+	LogTools & appendLogHeader(const char * filename, const long linenum, const char * funcname);
 };
 
 TOOLSPACE_END

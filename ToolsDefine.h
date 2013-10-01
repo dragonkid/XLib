@@ -17,6 +17,8 @@ typedef std::string                 DString;
 typedef int                         DInt4;
 typedef double                      DFloat8;
 typedef long long                   DTime_t;
+typedef unsigned long long			DULongL;
 typedef std::ofstream				DOfstream;
+typedef std::streamoff				DStreamOff;
 
 #endif

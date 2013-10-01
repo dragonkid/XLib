@@ -30,6 +30,9 @@
     <ClInclude Include="..\TimeTools.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\ThreadTools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\FileTools.cpp">
@@ -45,6 +48,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\TimeTools.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThreadTools.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

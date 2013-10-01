@@ -66,26 +66,30 @@ TEST(StringTools, ValueToString)
 
 int main(int argc, char * argv[])
 {
-	// test start
+	// log test start
 	DLOGGER_INIT;
-	DLOGGER << 12312412 << "asdfasdfa" << std::endl;
-	DLOGGER << "asdfas" << std::endl;
-	std::vector<std::string> tmp_vecTest;
-	tmp_vecTest.push_back("Show me the money.");
-	tmp_vecTest.push_back("Black sheep wall.");
-	DLOGGER << "tmp_vecTest:\n";
-	for (std::vector<std::string>::size_type i = 0; i < tmp_vecTest.size(); ++i)
-	{
-		DLOGGER << "\t" + DTools::StringTools::valueToString(i + 1) + ". " << tmp_vecTest.at(i) << "\n";
-	}
-	DLOGGER << std::endl;
-	DLOGGER << "test" << std::endl;
+	// base write log function test.
+	//DLOGGER << 12312412 << "asdfasdfa" << std::endl;
+	//DLOGGER << "asdfas" << std::endl;
+	//std::vector<std::string> tmp_vecTest;
+	//tmp_vecTest.push_back("Show me the money.");
+	//tmp_vecTest.push_back("Black sheep wall.");
+	//DLOGGER << "tmp_vecTest:\n";
+	//for (std::vector<std::string>::size_type i = 0; i < tmp_vecTest.size(); ++i)
+	//{
+	//	DLOGGER << "\t" + DTools::StringTools::valueToString(i + 1) + ". " << tmp_vecTest.at(i) << "\n";
+	//}
+	//DLOGGER << std::endl;
+	//DLOGGER << "test" << std::endl;
+	// file partition function test.
 	//for (;;)
 	//{
 	//	DLOGGER << "asdfasasdfasdfasdafddddddddddddddddddddddddddddddddd" << std::endl;
 	//}
+	// flow id function test.
+
 	DLOGGER_END;
-	// test end
+	// log test end
 
     testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

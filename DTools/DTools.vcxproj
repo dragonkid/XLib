@@ -87,6 +87,7 @@
     <ClInclude Include="..\FileTools.h" />
     <ClInclude Include="..\LogTools.h" />
     <ClInclude Include="..\StringTools.h" />
+    <ClInclude Include="..\ThreadTools.h" />
     <ClInclude Include="..\TimeTools.h" />
     <ClInclude Include="..\ToolsDefine.h" />
   </ItemGroup>
@@ -95,6 +96,7 @@
     <ClCompile Include="..\LogTools.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\StringTools.cpp" />
+    <ClCompile Include="..\ThreadTools.cpp" />
     <ClCompile Include="..\TimeTools.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
