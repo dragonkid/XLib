@@ -23,7 +23,7 @@ typedef unsigned int (__stdcall * THREAD_FUN_TYPE)(void *);
 #else  //define the macro for POSIX thread
 
 #include <pthread.h>
-/*************  mutex (use mutex in Unix like) ***************/
+/*************  mutex (use mutex in Unix like) ***********************/
 #define THREAD_MUTEX             pthread_mutex_t
 #define INITIALIZE_MUTEX(mutex)  pthread_mutex_init(mutex, NULL)   
 #define DESTROY_MUTEX            pthread_mutex_destroy

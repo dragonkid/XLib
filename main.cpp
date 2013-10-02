@@ -3,6 +3,7 @@
 #include "LogTools.h"
 #include "StringTools.h"
 #include "TimeTools.h"
+#include "ThreadTools.h"
 #include <iostream>
 #include <gtest/gtest.h>
 #include <vector>
@@ -64,10 +65,21 @@ TEST(StringTools, ValueToString)
 	EXPECT_EQ("123", StringTools::valueToString(123));
 }
 
+int printLog(void *)
+{
+	for (;;)
+	{
+		DLOGGER << "22222222222222222222222222222222222" << std::endl;
+	}
+	return 0;
+}
+
 int main(int argc, char * argv[])
 {
 	// log test start
-	DLOGGER_INIT;
+	//DLOGGER_INIT;
+	// flow id function test.
+	//DTools::ThreadTools::CREATE_THREAD(printLog, NULL);
 	// base write log function test.
 	//DLOGGER << 12312412 << "asdfasdfa" << std::endl;
 	//DLOGGER << "asdfas" << std::endl;
@@ -84,13 +96,12 @@ int main(int argc, char * argv[])
 	// file partition function test.
 	//for (;;)
 	//{
-	//	DLOGGER << "asdfasasdfasdfasdafddddddddddddddddddddddddddddddddd" << std::endl;
+	//	DLOGGER << "11111111111111111111111111111111111" << std::endl;
 	//}
-	// flow id function test.
-
-	DLOGGER_END;
+	//DLOGGER_END;
 	// log test end
 
     testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
+	return 0;
 }

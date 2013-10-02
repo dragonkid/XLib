@@ -13,9 +13,9 @@ TOOLSPACE_BEGIN
 // A complete debug tool.
 
 // Macros of log.
-#define DLOGGER_INIT DTools::LogTools * pLogger = DTools::LogTools::enableLogger();
-#define DLOGGER (*pLogger).appendLogHeader(__FILE__, __LINE__, __FUNCTION__)
-#define DLOGGER_END pLogger->disableLogger();
+#define DLOGGER_INIT g_pLogger = DTools::LogTools::enableLogger();
+#define DLOGGER (*g_pLogger).appendLogHeader(__FILE__, __LINE__, __FUNCTION__)
+#define DLOGGER_END g_pLogger->disableLogger();
 
 #define MAX_LOG_FILE_SIZE (30 * 1000 * 1000)	// 30M
 
@@ -80,5 +80,7 @@ public:
 };
 
 TOOLSPACE_END
+
+extern DTools::LogTools * g_pLogger;
 
 #endif

@@ -6,6 +6,8 @@
 #include <stdarg.h>
 #include <sstream>
 
+DTools::LogTools * g_pLogger = NULL;
+
 TOOLSPACE_BEGIN
 
 #ifdef WIN32
