@@ -8,6 +8,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
+
 using namespace DTools;
 
 // FileTools
